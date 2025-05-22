@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ ShineSteps - Gelişim Yolculuğum</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <h1>✨ ShineSteps</h1>
+                <p>Shine brighter with every step.</p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#home"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                    <li><a href="#tasks"><i class="fas fa-tasks"></i> Görevlerim</a></li>
+                    <li><a href="#achievements"><i class="fas fa-trophy"></i> Başarılarım</a></li>
+                    <li><a href="#reports"><i class="fas fa-chart-bar"></i> Raporlar</a></li>
+                </ul>
+            </nav>
+            <button id="menu-toggle" class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <!-- Mobil Menü -->
+        <div id="mobile-menu" class="mobile-menu">
+            <ul>
+                <li class="active"><a href="#home"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                <li><a href="#tasks"><i class="fas fa-tasks"></i> Görevlerim</a></li>
+                <li><a href="#achievements"><i class="fas fa-trophy"></i> Başarılarım</a></li>
+                <li><a href="#reports"><i class="fas fa-chart-bar"></i> Raporlar</a></li>
+            </ul>
+        </div>
+
+        <!-- Ana İçerik -->
+        <main id="home">
+            <!-- Motivasyon Mesajı -->
+            <section class="motivation-section">
+                <div class="motivation-card">
+                    <div class="motivation-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="motivation-content">
+                        <h2>Bugünün Motivasyon Mesajı</h2>
+                        <p id="motivation-message">Başarı yolundaki her adım, kendine olan inancını güçlendirir.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Özet İstatistikler -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Bugün</h3>
+                            <p><span id="today-completed">0</span> / <span id="today-total">0</span> görev</p>
+                            <div class="progress-bar">
+                                <div class="progress" id="today-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-week"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Bu Hafta</h3>
+                            <p><span id="week-completed">0</span> / <span id="week-total">0</span> görev</p>
+                            <div class="progress-bar">
+                                <div class="progress" id="week-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Çalışma Serisi</h3>
+                            <p>Mevcut: <span id="current-streak">0</span> gün</p>
+                            <p>En uzun: <span id="longest-streak">0</span> gün</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Görev Ekleme Formu -->
+            <section id="add-task" class="card">
+                <h2>Yeni Görev Ekle</h2>
+                <form id="task-form">
+                    <div class="form-group">
+                        <label for="task-title">Görev Başlığı <span class="required">*</span></label>
+                        <input type="text" id="task-title" placeholder="Görev başlığını girin" required>
+                        <div class="error-message" id="title-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-description">Görev Açıklaması <span class="required">*</span></label>
+                        <textarea id="task-description" rows="3" placeholder="Görev detaylarını girin" required></textarea>
+                        <div class="error-message" id="description-error"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="task-category">Kategori <span class="required">*</span></label>
+                            <select id="task-category" required>
+                                <option value="">Seçiniz</option>
+                                <option value="egitim">Eğitim</option>
+                                <option value="spor">Spor/Sağlık</option>
+                                <option value="kariyer">Kariyer</option>
+                                <option value="kisisel">Kişisel Gelişim</option>
+                                <option value="hobi">Hobi</option>
+                            </select>
+                            <div class="error-message" id="category-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-priority">Öncelik <span class="required">*</span></label>
+                            <select id="task-priority" required>
+                                <option value="">Seçiniz</option>
+                                <option value="yuksek">Yüksek</option>
+                                <option value="orta">Orta</option>
+                                <option value="dusuk">Düşük</option>
+                            </select>
+                            <div class="error-message" id="priority-error"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-duration">Süre (dakika) <span class="required">*</span></label>
+                        <input type="number" id="task-duration" min="1" max="180" placeholder="Görevin dakika cinsinden süresi" required>
+                        <div class="error-message" id="duration-error"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Görev Ekle</button>
+                </form>
+            </section>
+
+            <!-- Görevler Listesi -->
+            <section id="tasks" class="card">
+                <h2>Görevlerim</h2>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="active-tasks">Aktif Görevler</button>
+                    <button class="tab-btn" data-tab="completed-tasks">Tamamlanan Görevler</button>
+                </div>
+                <div id="active-tasks" class="tab-content active">
+                    <div id="no-active-tasks" class="empty-state">
+                        <i class="fas fa-tasks"></i>
+                        <p>Henüz aktif görev yok. Yeni bir görev ekleyin!</p>
+                    </div>
+                    <div id="active-tasks-list" class="tasks-list"></div>
+                </div>
+                <div id="completed-tasks" class="tab-content">
+                    <div id="no-completed-tasks" class="empty-state">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Henüz tamamlanmış görev yok.</p>
+                    </div>
+                    <div id="completed-tasks-list" class="tasks-list"></div>
+                </div>
+            </section>
+
+            <!-- Başarılar ve Rozetler -->
+            <section id="achievements" class="card">
+                <h2>Başarılarım</h2>
+                <div class="overall-progress">
+                    <h3>Genel İlerleme</h3>
+                    <p>Tamamlanan: <span id="total-completed">0</span> / <span id="total-tasks">0</span> görev</p>
+                    <div class="progress-bar large">
+                        <div class="progress" id="total-progress" style="width: 0%">0%</div>
+                    </div>
+                </div>
+                
+                <h3>Kazanılan Rozetler</h3>
+                <div class="badges-container">
+                    <div class="badge locked" data-badge="first-task">
+                        <i class="fas fa-star"></i>
+                        <p>İlk Görev</p>
+                        <span class="badge-tooltip">İlk görevini tamamla</span>
+                    </div>
+                    <div class="badge locked" data-badge="five-tasks">
+                        <i class="fas fa-certificate"></i>
+                        <p>5 Görev</p>
+                        <span class="badge-tooltip">5 görev tamamla</span>
+                    </div>
+                    <div class="badge locked" data-badge="streak-3">
+                        <i class="fas fa-fire"></i>
+                        <p>3 Gün Serisi</p>
+                        <span class="badge-tooltip">3 gün üst üste görev tamamla</span>
+                    </div>
+                    <div class="badge locked" data-badge="all-categories">
+                        <i class="fas fa-th"></i>
+                        <p>Çeşitlilik</p>
+                        <span class="badge-tooltip">Her kategoriden en az bir görev tamamla</span>
+                    </div>
+                    <div class="badge locked" data-badge="high-priority">
+                        <i class="fas fa-exclamation"></i>
+                        <p>Öncelikli</p>
+                        <span class="badge-tooltip">5 yüksek öncelikli görev tamamla</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Raporlar -->
+            <section id="reports" class="card">
+                <h2>Raporlarım</h2>
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <h3>Bugün</h3>
+                        <div class="report-item">
+                            <span>Eklenen:</span>
+                            <span id="today-added">0</span>
+                        </div>
+                        <div class="report-item">
+                            <span>Tamamlanan:</span>
+                            <span id="today-done">0</span>
+                        </div>
+                    </div>
+                    <div class="report-card">
+                        <h3>Bu Hafta</h3>
+                        <div class="report-item">
+                            <span>Eklenen:</span>
+                            <span id="week-added">0</span>
+                        </div>
+                        <div class="report-item">
+                            <span>Tamamlanan:</span>
+                            <span id="week-done">0</span>
+                        </div>
+                        <div class="report-item">
+                            <span>Tamamlanma Oranı:</span>
+                            <span id="week-rate">0%</span>
+                        </div>
+                    </div>
+                    <div class="report-card">
+                        <h3>Kategori Dağılımı</h3>
+                        <div id="category-stats" class="category-stats">
+                            <div class="category-item">
+                                <span>Eğitim:</span>
+                                <span id="cat-egitim">0</span>
+                            </div>
+                            <div class="category-item">
+                                <span>Spor/Sağlık:</span>
+                                <span id="cat-spor">0</span>
+                            </div>
+                            <div class="category-item">
+                                <span>Kariyer:</span>
+                                <span id="cat-kariyer">0</span>
+                            </div>
+                            <div class="category-item">
+                                <span>Kişisel Gelişim:</span>
+                                <span id="cat-kisisel">0</span>
+                            </div>
+                            <div class="category-item">
+                                <span>Hobi:</span>
+                                <span id="cat-hobi">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Geri Bildirim Formu -->
+<section id="feedback" class="card">
+    <h2>Geri Bildirim Formu</h2>
+    <p>Uygulama deneyiminizi iyileştirmemize yardımcı olmak için düşüncelerinizi bizimle paylaşın.</p>
+    
+    <div id="feedback-success" class="success-message" style="display: none;">
+        <i class="fas fa-check-circle"></i> Geri bildiriminiz başarıyla gönderildi!
+    </div>
+    
+    <form id="feedback-form">
+        <div class="form-group">
+            <label for="feedback-name">Adınız <span class="required">*</span></label>
+            <input type="text" id="feedback-name" placeholder="Adınızı girin" required>
+            <div class="error-message" id="name-error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="feedback-email">E-posta Adresiniz <span class="required">*</span></label>
+            <input type="email" id="feedback-email" placeholder="E-posta adresinizi girin" required>
+            <div class="error-message" id="email-error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label>Uygulamayı ne kadar süredir kullanıyorsunuz? <span class="required">*</span></label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="usage-time" value="0-7" required> 0-7 gün
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="usage-time" value="8-30" required> 8-30 gün
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="usage-time" value="1-3ay" required> 1-3 ay
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="usage-time" value="3+" required> 3+ ay
+                </label>
+            </div>
+            <div class="error-message" id="usage-time-error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label>Hangi özellikleri en çok beğeniyorsunuz? <span class="required">*</span></label>
+            <div class="checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="favorite-features" value="görev-takibi"> Görev Takibi
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="favorite-features" value="istatistikler"> İstatistikler
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="favorite-features" value="rozetler"> Rozetler
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="favorite-features" value="kategori-sistemi"> Kategori Sistemi
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="favorite-features" value="motivasyon"> Motivasyon Mesajları
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="favorite-features" value="zamanlayıcı"> Görev Zamanlayıcı
+                </label>
+            </div>
+            <div class="error-message" id="features-error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label>Genel memnuniyet düzeyiniz? <span class="required">*</span></label>
+            <div class="rating-group">
+                <div class="rating-label">Düşük</div>
+                <div class="rating-options">
+                    <label>
+                        <input type="radio" name="satisfaction" value="1" required>
+                        <span>1</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="satisfaction" value="2" required>
+                        <span>2</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="satisfaction" value="3" required>
+                        <span>3</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="satisfaction" value="4" required>
+                        <span>4</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="satisfaction" value="5" required>
+                        <span>5</span>
+                    </label>
+                </div>
+                <div class="rating-label">Yüksek</div>
+            </div>
+            <div class="error-message" id="satisfaction-error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="feedback-message">Yorumunuz veya İyileştirme Önerileriniz <span class="required">*</span></label>
+            <textarea id="feedback-message" rows="4" placeholder="Düşüncelerinizi yazın..." required></textarea>
+            <div class="error-message" id="message-error"></div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Geri Bildirim Gönder</button>
+    </form>
+    
+    <div class="feedback-list-section">
+        <h3>Kullanıcı Geri Bildirimleri</h3>
+        <div id="no-feedback" class="empty-state">
+            <i class="fas fa-comments"></i>
+            <p>Henüz geri bildirim yok. İlk yorumu siz yapın!</p>
+        </div>
+        <div id="feedback-list" class="feedback-list"></div>
+    </div>
+</section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 ShineSteps | Tüm Hakları Saklıdır</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/code_yourpath/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/azra-cengiz-2315032aa/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/iamazra03" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Zamanlayıcı Modalı -->
+    <div id="timer-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-timer">&times;</span>
+            <h2>Görev Zamanlayıcısı</h2>
+            <div class="timer-container">
+                <div class="timer-display">
+                    <span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
+                </div>
+                <div class="timer-details">
+                    <h3 id="timer-title">Görev Başlığı</h3>
+                    <p id="timer-description">Görev açıklaması burada görünecek.</p>
+                </div>
+                <div class="timer-controls">
+                    <button id="timer-start" class="btn btn-primary"><i class="fas fa-play"></i> Başlat</button>
+                    <button id="timer-pause" class="btn btn-secondary" disabled><i class="fas fa-pause"></i> Duraklat</button>
+                    <button id="timer-complete" class="btn btn-success"><i class="fas fa-check"></i> Tamamla</button>
+                    <button id="timer-cancel" class="btn btn-danger"><i class="fas fa-times"></i> İptal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Başarı Modalı -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-modal">
+            <span class="close-modal" id="close-success">&times;</span>
+            <div class="success-animation">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Tebrikler!</h2>
+            <p id="success-message">Görevi başarıyla tamamladınız!</p>
+            <div class="motivation-box">
+                <p id="motivation-quote">Harika bir iş çıkardın!</p>
+            </div>
+            <button id="success-ok" class="btn btn-primary">Tamam</button>
+        </div>
+    </div>
+
+    
+
+    <!-- Bildirim Alanı -->
+    <div id="notification-container"></div>
+
+    <script src="app.js"></script>
+
+        <!-- Chatbot Butonu -->
+    <a href="https://poe.com/ShineStepsAssistant" target="_blank" class="chatbot-button" title="Yardımcı Asistan">
+    💬
+    </a>
+
+
+</body>
+</html>
